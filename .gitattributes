@@ -1,1 +1,2 @@
-precompiled/Qt653-ubuntu2004.tar.xz filter=lfs diff=lfs merge=lfs -text
+precompiled/ubuntu/Qt653-ubuntu2004.tar.xz filter=lfs diff=lfs merge=lfs -text
+precompiled/windows/QtMingw64.7z filter=lfs diff=lfs merge=lfs -text
