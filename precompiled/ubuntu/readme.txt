@@ -6,6 +6,6 @@ docker build . -t ubuntu2004qt653
 # Enter the container:
 docker run --rm -it -v ${PWD}:/host ubuntu2004qt653
 
-# Tar the the Qt directory:
+# Tar the Qt directory:
 cd /usr/local
 XZ_OPT='-9' tar -cJf /host/Qt653-ubuntu2004.tar.xz Qt-6.5.3

@@ -33,7 +33,7 @@ RUN wget -q https://download.qt.io/archive/qt/6.5/6.5.3/single/qt-everywhere-src
     && tar xf qt-everywhere-src-6.5.3.tar.xz \
     && rm qt-everywhere-src-6.5.3.tar.xz \
     && cd qt-everywhere-src-6.5.3 \
-    && rm -rf qtquick3d qtquick3dphysics qtquicktimeline qtquickeffectmaker qtgrpc qtscxml qtnetworkauth qt5compat qt3d qtactiveqt qtcharts qtcoap qtconnectivity qtdatavis3d qtlanguageserver qtlocation qtmqtt qtlottie qtmultimedia qtopcua qtpositioning qtremoteobjects qtsensors qtserialbus qtserialport qtvirtualkeyboard qtwayland qttools qtwebengine qtdoc qtspeech qttranslations qtwebview qtwebchannel qtwebsockets \
+    && rm -rf qtquickeffectmaker qtgrpc qtscxml qtnetworkauth qt5compat qt3d qtactiveqt qtcharts qtcoap qtconnectivity qtdatavis3d qtlanguageserver qtlocation qtmqtt qtlottie qtmultimedia qtopcua qtpositioning qtremoteobjects qtsensors qtserialbus qtserialport qtvirtualkeyboard qtwayland qttools qtwebengine qtdoc qtspeech qttranslations qtwebview qtwebchannel qtwebsockets qthttpserver \
     && ./configure -opensource -nomake tests -nomake examples -no-icu -confirm-license -no-dbus -sql-sqlite -xcb -xcb-xlib -bundled-xcb-xinput \
     && cmake --build . -j4 \
     && cmake --install . \
