@@ -14,11 +14,6 @@ jobs:
   build-linux:
     runs-on: ubuntu-22.04
 
-    env:
-      QT_PATH: ${{ runner.temp }}/Qt-6.5.3
-      APP_NAME: ${{ inputs.app_name }}
-      APP_IMAGE: ${{ inputs.artifact_name }}
-
     steps:
       - uses: actions/checkout@v4
 
@@ -48,7 +43,10 @@ jobs:
           wget -q https://github.com/Bolbe/Tools/raw/refs/heads/main/precompiled/ubuntu/Qt653-ubuntu2204.tar.xz
           tar xf Qt653-ubuntu2204.tar.xz
 
-      - name: Build
+      - name: Build 
+        working-directory: ${{ github.workspace }} 
+        env: 
+          QT_PATH: ${{ runner.temp }}/Qt-6.5.3 
         run: bash ./scripts/build-linux.sh ${{ inputs.artifact_name }} ${{ inputs.app_name }}
 
       - name: Upload artifact
