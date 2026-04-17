@@ -40,7 +40,7 @@ jobs:
       - name: Download Qt
         working-directory: ${{ runner.temp }}
         run: |
-          wget -q https://github.com/Bolbe/Tools/raw/refs/heads/main/precompiled/ubuntu/Qt653-ubuntu2204.tar.xz
+          wget -q https://github.com/Bolbe/Qt-precompiled/raw/refs/heads/main/ubuntu/Qt653-ubuntu2204.tar.xz
           tar xf Qt653-ubuntu2204.tar.xz
 
       - name: Build 
