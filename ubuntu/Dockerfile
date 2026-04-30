@@ -29,13 +29,49 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libbz2-dev \
     && apt-get clean cache
 
-RUN wget -q https://download.qt.io/archive/qt/6.5/6.5.3/single/qt-everywhere-src-6.5.3.tar.xz \
-    && tar xf qt-everywhere-src-6.5.3.tar.xz \
-    && rm qt-everywhere-src-6.5.3.tar.xz \
+RUN wget -q https://download.qt.io/archive/qt/6.5/6.5.3/single/qt-everywhere-src-6.5.3.tar.xz
+
+RUN tar xf qt-everywhere-src-6.5.3.tar.xz \
     && cd qt-everywhere-src-6.5.3 \
     && rm -rf qtquickeffectmaker qtgrpc qtscxml qtnetworkauth qt5compat qt3d qtactiveqt qtcharts qtcoap qtconnectivity qtdatavis3d qtlanguageserver qtlocation qtmqtt qtlottie qtmultimedia qtopcua qtpositioning qtremoteobjects qtsensors qtserialbus qtserialport qtvirtualkeyboard qtwayland qttools qtwebengine qtdoc qtspeech qttranslations qtwebview qtwebchannel qtwebsockets qthttpserver \
-    && ./configure -opensource -nomake tests -nomake examples -no-icu -confirm-license -no-dbus -sql-sqlite -xcb -xcb-xlib -bundled-xcb-xinput \
+    && ./configure \
+        -opensource \
+        -release\ 
+        -confirm-license \
+        -prefix /usr/local/Qt-6.5.3 \
+        -nomake tests \
+        -nomake examples \
+        -no-icu \
+        -no-dbus \
+        -sql-sqlite \
+        -xcb \
+        -xcb-xlib \
+        -bundled-xcb-xinput \
     && cmake --build . -j4 \
     && cmake --install . \
     && cd .. \
-    && rm -rf qt-everywhere-src-6.5.3
+    && rm -rf qt-everywhere-src-6.5.3 \
+    && mv /usr/local/Qt-6.5.3 /usr/local/Qt-6.5.3-dynamic  
+
+RUN tar xf qt-everywhere-src-6.5.3.tar.xz \
+    && cd qt-everywhere-src-6.5.3 \
+    && rm -rf qtquickeffectmaker qtgrpc qtscxml qtnetworkauth qt5compat qt3d qtactiveqt qtcharts qtcoap qtconnectivity qtdatavis3d qtlanguageserver qtlocation qtmqtt qtlottie qtmultimedia qtopcua qtpositioning qtremoteobjects qtsensors qtserialbus qtserialport qtvirtualkeyboard qtwayland qttools qtwebengine qtdoc qtspeech qttranslations qtwebview qtwebchannel qtwebsockets qthttpserver \
+    && ./configure \
+        -release \ 
+        -static \
+        -confirm-license \
+        -nomake tests \
+        -nomake examples \
+        -no-icu \
+        -no-dbus \
+        -sql-sqlite \
+        -xcb \
+        -xcb-xlib \
+        -bundled-xcb-xinput \
+    && cmake --build . -j4 \
+    && cmake --install . \
+    && cd .. \
+    && rm -rf qt-everywhere-src-6.5.3 \
+    && mv /usr/local/Qt-6.5.3 /usr/local/Qt-6.5.3-static
+    
+
